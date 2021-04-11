@@ -24,7 +24,10 @@ with open(csvpath) as csvfile:
 with open(csvpath) as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        Total_Profit = map(int, Total_Profit)
-        Total_Profit = list(map(int, Total_Profit))
         Total_Profit.append(row["Profit/Losses"])
+        Total_Profit_Loss = map(int, Total_Profit)
     #print(Total_Profit)
+
+Sum = sum(Total_Profit_Loss)
+print("Total: $"+str(Sum))
+
