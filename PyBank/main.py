@@ -15,6 +15,8 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         #print (row)
          Total_Row += 1
+    print("Financial Analysis")
+    print("--------------------------")
     print ("Total months: " + str(Total_Row))
 
 with open(csvpath) as csvfile:
@@ -28,7 +30,6 @@ with open(csvpath) as csvfile:
 
         df = pd.DataFrame({ 'Profit/Losses': pbank["Profit/Losses"]})
         df['output']=df['Profit/Losses'] -df['Profit/Losses'].shift(1)
-        #print(df)
         
         df2 = pd.merge(pbank, df, on='Profit/Losses', how='outer')
 
@@ -36,10 +37,14 @@ with open(csvpath) as csvfile:
         print("Average Change: $" + str(Avr_Chg/Total_Row))
 
         High_Profit = (df["output"].max())
-        print("Greatest Increase in Profit: $" + str(High_Profit))
+        High_Ind = int(df2[df2['output']==High_Profit].index[0])
+        High_Month =(pbank.iloc[High_Ind]['Date'])
+        print("Greatest Increase in Profit: $" + High_Month + " (" +str(High_Profit) + ")")
 
         High_Loss = (df["output"].min())
-        print("Greatest Increase in Loss: $" + str(High_Loss))
+        Low_Ind = int(df2[df2['output']==High_Loss].index[0])
+        Low_Month =(pbank.iloc[Low_Ind]['Date'])
+        print("Greatest Decrease in Profit: $" + Low_Month + " (" +str(High_Loss) + ")")
 
 
 
