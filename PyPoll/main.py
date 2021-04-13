@@ -14,3 +14,8 @@ with open(csvpath) as csvfile:
 
     for row in csvreader:
         print (row)
+        Total_Row += 1
+    print("Election Results")
+    print("--------------------------")
+    print("Total Votes: " + str(Total_Row))
+    print("--------------------------")
