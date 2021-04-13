@@ -34,7 +34,7 @@ with open(csvpath) as csvfile:
         High_Vote = (Candidates_Count_df["Percentage"].max())
         High_Ind = str(Candidates_Count_df[Candidates_Count_df['Percentage']==High_Vote].index[0])  
 
-        First_Candidate = Candidates_Count_df.iloc[3:].index[0]
+        First_Candidate = Candidates_Count_df.iloc[0:].index[0]
         First_Percentage =(Candidates_Count_df.loc[First_Candidate]['Percentage'])
         First_Votes =(Candidates_Count_df.loc[First_Candidate]['Votes'])
         print(First_Candidate +": " + str(int(First_Percentage))+ "%" + " ("+ str(First_Votes)+")")
